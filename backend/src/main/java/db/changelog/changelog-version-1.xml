@@ -1,0 +1,84 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd ">
+
+    <changeSet id="1737868170571210903" author="pedro (generated)" labels="remove-table" context="task">
+        <comment>Remove table of "pagamento" on database</comment>
+        <dropTable cascadeConstraints="false"
+                   schemaName="public"
+                   tableName="pagamento"/>
+    </changeSet>
+
+    <changeSet id="1737869310702694658" author="pedro (generated)" labels="remove-table" context="task">
+        <comment>Remove table of "person-test" on database</comment>
+        <dropTable cascadeConstraints="true"
+                   schemaName="public"
+                   tableName="pessoa-test"/>
+    </changeSet>
+
+    <changeSet id="1737869355626545762" author="pedro" labels="create-table" context="task">
+        <comment>Create "pagamento" table</comment>
+        <createTable tableName="mensalidade" schemaName="public">
+            <column name="id" type="serial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="quantidadeAulas" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="decimal"/>
+            <column name="situacao" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comprovante" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="matricula_aluno" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet  author="pedro"  id="1737870343830653819">
+        <addForeignKeyConstraint  baseColumnNames="matricula_aluno"
+                                  baseTableName="mensalidade"
+                                  baseTableSchemaName="public"
+                                  constraintName="fk_mensalidade_aluno"
+                                  deferrable="true"
+                                  initiallyDeferred="true"
+                                  onDelete="CASCADE"
+                                  referencedColumnNames="matricula"
+                                  referencedTableName="aluno"
+                                  referencedTableSchemaName="public"
+                                  validate="true"/>
+    </changeSet>
+
+    <changeSet author="pedro" id="1737870950678039775" context="add-column">
+        <addColumn tableName="aula">
+            <column name="descricao" type="varchar(255)"/>
+            <column name="test" type="int"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="pedro" id="1737871166524226648" context="update-column">
+        <modifyDataType columnName="situacao" newDataType="bool" tableName="mensalidade"/>
+    </changeSet>
+
+    <changeSet author="pedro" id="1737871310750594804" context="remove-column">
+        <dropColumn tableName="aula" schemaName="public">
+            <column name="test"/>
+        </dropColumn>
+    </changeSet>
+
+    <changeSet author="pedro" id="1737871707970346415" context="inser-data">
+        <insert tableName="aula">
+            <column name="data" value="2025-01-01"/>
+            <column name="tema" value="Base de luta"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
