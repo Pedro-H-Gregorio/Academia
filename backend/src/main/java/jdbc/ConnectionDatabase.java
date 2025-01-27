@@ -14,23 +14,24 @@ public class ConnectionDatabase {
     private static String password;
     private static String url;
 
-    static  {
-        try (InputStream inputStream = Files.newInputStream(Paths.get("/.env"))) {
-            Properties properties = new Properties();
-            properties.load(inputStream);
-            user = properties.getProperty("USER");
-            password = properties.getProperty("PASSWORD");
-            url = properties.getProperty("url");
+    static {
+        try {
+            Class.forName("org.postgresql.Driver");
+            try (InputStream inputStream = Files.newInputStream(Paths.get(".env"))) {
+                Properties properties = new Properties();
+                properties.load(inputStream);
+                user = properties.getProperty("USER");
+                password = properties.getProperty("PASSWORD");
+                url = properties.getProperty("URL");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Driver do PostgreSQL não encontrado!", e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erro ao carregar o arquivo .env: " + e.getMessage());
         }
     }
 
     public static Connection getConnection() throws SQLException {
-        try(Connection con = DriverManager.getConnection(url, user, password)){
-            return con;
-        } catch (SQLException e){
-            throw new SQLException(e);
-        }
+        return  DriverManager.getConnection(url, user, password);
     }
 }
