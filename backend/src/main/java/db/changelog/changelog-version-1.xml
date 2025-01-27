@@ -81,4 +81,27 @@
             <column name="tema" value="Base de luta"/>
         </insert>
     </changeSet>
+
+    <changeSet author="pedro" id="1737920328640222513" context="add-column">
+        <addColumn tableName="aluno">
+            <column name="sexo" type="char"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="pedro" id="1737922601379620476" context="Rename-column">
+        <renameColumn tableName="alunos_aula" oldColumnName="id" newColumnName="id_aula"/>
+    </changeSet>
+
+    <changeSet author="pedro" id="1737923295188258694" context="Rename-column">
+        <renameColumn tableName="mensalidade" oldColumnName="data" newColumnName="periodo"/>
+        <modifyDataType tableName="mensalidade" columnName="periodo" newDataType="varchar(3)"/>
+    </changeSet>
+
+    <changeSet author="pedro" id="1737923669482703166" context="Rename-column">
+        <renameColumn tableName="mensalidade" oldColumnName="quantidadeAulas" newColumnName="quantidade_aula"/>
+    </changeSet>
+
+    <changeSet author="pedro" id="1737923841070979004" context="add not null constraint">
+        <addNotNullConstraint columnName="valor" tableName="mensalidade"/>
+    </changeSet>
 </databaseChangeLog>
