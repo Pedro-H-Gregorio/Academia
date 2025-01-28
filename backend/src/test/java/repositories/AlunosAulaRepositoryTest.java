@@ -26,7 +26,7 @@ class AlunosAulaRepositoryTest {
         alunoRepository = new AlunoRepository();
         aulaRepository = new AulaRepository();
         this.aluno = new Aluno(Long.valueOf(System.currentTimeMillis() * (int)(Math.random() * 90) + 10).intValue(), "John Doe", new java.util.Date(), 25, 'M', "123456789");
-        this.aula = new Aula(new java.sql.Date(System.currentTimeMillis() * ((int)(Math.random() * 100 * Math.random()) + 15)), "Aula de chutes", "");
+        this.aula = new Aula(new java.sql.Date(System.currentTimeMillis() * (int)(Math.random() * 93) + 15), "Aula de chutes", "");
         this.alunoRepository.save(aluno);
         this.aulaRepository.save(aula);
     }
@@ -96,6 +96,8 @@ class AlunosAulaRepositoryTest {
         alunoAulaRepository.save(alunosAula1);
         List<AlunosAula> alunosAulas = alunoAulaRepository.getAll();
         int rowsAffected = alunoAulaRepository.deleteAll();
+        alunoAulaRepository.deleteAll();
+        aulaRepository.deleteAll();
         assertEquals(alunosAulas.size(), rowsAffected);
     }
 }
