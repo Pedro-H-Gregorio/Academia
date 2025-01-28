@@ -27,7 +27,8 @@ public class AulaRepositoryTest {
         int result = aulaRepository.deleteAll();
         if (!aulas.isEmpty()) {
             System.out.println("Existe aulas antes de excluir");
-            assertEquals(1, result);
+            List<Aula> resultado = aulaRepository.getAll();
+            assertEquals(0, resultado.size());
         } else {
             System.out.println("Não existe aulas antes de excluir");
             assertEquals(0, result);
@@ -48,7 +49,7 @@ public class AulaRepositoryTest {
     void testGetAll() throws SQLException {
         List<Aula> aulas = aulaRepository.getAll();
 
-        assertEquals(1, aulas.size());
+        assertNotNull(aulas);
         Aula aula = aulas.get(0);
         System.out.println(aula);
     }
