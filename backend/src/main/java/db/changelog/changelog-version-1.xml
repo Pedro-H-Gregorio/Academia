@@ -104,4 +104,15 @@
     <changeSet author="pedro" id="1737923841070979004" context="add not null constraint">
         <addNotNullConstraint columnName="valor" tableName="mensalidade"/>
     </changeSet>
+
+    <changeSet author="pedro" id="1738041525747722044" context="add-column">
+        <addColumn tableName="mensalidade">
+            <column name="tipo_pagamento" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ano" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

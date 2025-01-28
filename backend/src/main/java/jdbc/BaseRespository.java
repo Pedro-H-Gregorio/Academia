@@ -1,15 +1,11 @@
 package jdbc;
 
-import jdbc.interfaces.JDBCRepository;
-
 import java.sql.SQLException;
-import java.util.List;
 import java.sql.Connection;
 
-public class BaseRespository <E,T> implements JDBCRepository<E,T> {
+public abstract class BaseRespository {
 
-    private static Connection connection;
-    private Class<E> entityClass;
+    private static final Connection connection;
 
     static {
         try {
@@ -19,28 +15,7 @@ public class BaseRespository <E,T> implements JDBCRepository<E,T> {
         }
     }
 
-    @Override
-    public int save(E object) {
-        return 0;
-    }
-
-    @Override
-    public E update(E object) {
-        return null;
-    }
-
-    @Override
-    public int delete(T object) {
-        return 0;
-    }
-
-    @Override
-    public List<E> getAll() {
-        return List.of();
-    }
-
-    @Override
-    public E getById(T object) {
-        return null;
+    public static Connection getConnection() {
+        return connection;
     }
 }

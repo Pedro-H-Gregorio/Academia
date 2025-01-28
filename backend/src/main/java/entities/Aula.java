@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.Date;
+import java.util.Optional;
 
 public class Aula {
     private Date data;
@@ -10,7 +11,8 @@ public class Aula {
     public Aula(Date data, String tema, String descricao) {
         this.data = data;
         this.tema = tema;
-        this.descricao = descricao;
+        Optional<String> descricaoOptional = descricao == null ? Optional.empty() : Optional.of(descricao);
+        this.descricao = descricaoOptional.orElse("");
     }
 
     public Date getData() {

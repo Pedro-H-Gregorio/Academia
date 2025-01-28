@@ -6,11 +6,28 @@ public class AlunosAula {
     private Integer matricula;
     private Date idAula;
     private Integer presenca;
+    private String id;
 
     public AlunosAula(Integer matricula, Date idAula, Integer presenca) {
+        this.id = matricula.toString() + "(+)" + idAula.toString();
         this.matricula = matricula;
         this.idAula = idAula;
         this.presenca = presenca;
+    }
+
+    public AlunosAula(String id, Integer matricula, Date idAula, Integer presenca) {
+        this.id = id;
+        this.matricula = matricula;
+        this.idAula = idAula;
+        this.presenca = presenca;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Integer getMatricula() {

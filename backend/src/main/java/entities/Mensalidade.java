@@ -10,8 +10,10 @@ public class Mensalidade {
     private Integer comprovante;
     private String periodo;
     private Integer matriculaAluno;
+    private String tipoPagamento;
+    private String ano;
 
-    public Mensalidade(int id, int quantidadeAulas, BigDecimal valor, Boolean situacao, Integer comprovante, String periodo, Integer matriculaAluno) {
+    public Mensalidade(int id, int quantidadeAulas, BigDecimal valor, Boolean situacao, Integer comprovante, String periodo, Integer matriculaAluno, String tipoPagamento, String ano) {
         this.id = id;
         this.quantidadeAulas = quantidadeAulas;
         this.valor = valor;
@@ -19,6 +21,8 @@ public class Mensalidade {
         this.comprovante = comprovante;
         this.periodo = periodo;
         this.matriculaAluno = matriculaAluno;
+        this.tipoPagamento = tipoPagamento;
+        this.ano = ano;
     }
 
     public int getId() {
@@ -77,6 +81,22 @@ public class Mensalidade {
         this.matriculaAluno = matriculaAluno;
     }
 
+    public String getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(String tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,6 +121,8 @@ public class Mensalidade {
                 ", comprovante=" + comprovante +
                 ", periodo='" + periodo + '\'' +
                 ", matriculaAluno=" + matriculaAluno +
+                ", tipoPagamento='" + tipoPagamento + '\'' +
+                ", ano='" + ano + '\'' +
                 '}';
     }
 }
