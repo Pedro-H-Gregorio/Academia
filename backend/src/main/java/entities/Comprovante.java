@@ -5,17 +5,15 @@ public class Comprovante {
     private int matriculaAluno;
     private int mensalidadeId;
     private String tipoArquivo;
-    private String urlArquivo;
     private String nomeArquivo;
     private String descricaoArquivo;
     private String bucketArquivo;
 
-    public Comprovante(int id, int matriculaAluno, int mensalidadeId, String tipoArquivo, String urlArquivo, String nomeArquivo, String descricaoArquivo, String bucketArquivo) {
+    public Comprovante(int id, int matriculaAluno, int mensalidadeId, String tipoArquivo, String nomeArquivo, String descricaoArquivo, String bucketArquivo) {
         this.id = id;
         this.matriculaAluno = matriculaAluno;
         this.mensalidadeId = mensalidadeId;
         this.tipoArquivo = tipoArquivo;
-        this.urlArquivo = urlArquivo;
         this.nomeArquivo = nomeArquivo;
         this.descricaoArquivo = descricaoArquivo;
         this.bucketArquivo = bucketArquivo;
@@ -51,14 +49,6 @@ public class Comprovante {
 
     public void setTipoArquivo(String tipoArquivo) {
         this.tipoArquivo = tipoArquivo;
-    }
-
-    public String getUrlArquivo() {
-        return urlArquivo;
-    }
-
-    public void setUrlArquivo(String urlArquivo) {
-        this.urlArquivo = urlArquivo;
     }
 
     public String getNomeArquivo() {
@@ -109,7 +99,6 @@ public class Comprovante {
                 ", matriculaAluno=" + matriculaAluno +
                 ", mensalidadeId=" + mensalidadeId +
                 ", tipoArquivo='" + tipoArquivo + '\'' +
-                ", urlArquivo='" + urlArquivo + '\'' +
                 ", nomeArquivo='" + nomeArquivo + '\'' +
                 ", descricaoArquivo='" + descricaoArquivo + '\'' +
                 ", bucketArquivo='" + bucketArquivo + '\'' +

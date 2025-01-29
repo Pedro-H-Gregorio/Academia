@@ -81,7 +81,6 @@ class MensalidadeRepositoryTest {
         mensalidadeRepository.save(mensalidade);
 
         Mensalidade fetched = mensalidadeRepository.getById(mensalidade.getId());
-
         assertNotNull(fetched, "A mensalidade com o ID especificado deveria ser encontrada.");
         assertEquals(mensalidade.getId(), fetched.getId(), "O ID da mensalidade deve ser o mesmo.");
     }

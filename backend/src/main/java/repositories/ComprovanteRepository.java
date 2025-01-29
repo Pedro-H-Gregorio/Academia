@@ -37,7 +37,6 @@ public class ComprovanteRepository extends BaseRespository implements JDBCReposi
                     .append("matricula_aluno", object.getMatriculaAluno())
                     .append("mensalidade_id", object.getMensalidadeId())
                     .append("tipo_arquivo", object.getTipoArquivo())
-                    .append("url_arquivo", object.getUrlArquivo())
                     .append("nome_arquivo", object.getNomeArquivo())
                     .append("descricao_arquivo", object.getDescricaoArquivo())
                     .append("bucket_arquivo", object.getBucketArquivo()));
@@ -59,7 +58,6 @@ public class ComprovanteRepository extends BaseRespository implements JDBCReposi
                 Updates.set("matricula_aluno", object.getMatriculaAluno()),
                 Updates.set("mensalidade_id", object.getMensalidadeId()),
                 Updates.set("tipo_arquivo", object.getTipoArquivo()),
-                Updates.set("url_arquivo", object.getUrlArquivo()),
                 Updates.set("nome_arquivo", object.getNomeArquivo()),
                 Updates.set("descricao_arquivo", object.getDescricaoArquivo()),
                 Updates.set("bucket_arquivo", object.getBucketArquivo())
@@ -100,7 +98,7 @@ public class ComprovanteRepository extends BaseRespository implements JDBCReposi
         MongoCollection<Document> collection = database.getCollection("comprovantes");
 
         Bson projectionFields = Projections.fields(
-                Projections.include("id", "matricula_aluno", "mensalidade_id", "tipo_arquivo", "url_arquivo", "nome_arquivo", "descricao_arquivo", "bucket_arquivo"),
+                Projections.include("id", "matricula_aluno", "mensalidade_id", "tipo_arquivo", "nome_arquivo", "descricao_arquivo", "bucket_arquivo"),
                 Projections.excludeId()
         );
 
@@ -112,7 +110,6 @@ public class ComprovanteRepository extends BaseRespository implements JDBCReposi
                     doc.getInteger("matricula_aluno"),
                     doc.getInteger("mensalidade_id"),
                     doc.getString("tipo_arquivo"),
-                    doc.getString("url_arquivo"),
                     doc.getString("nome_arquivo"),
                     doc.getString("descricao_arquivo"),
                     doc.getString("bucket_arquivo")
@@ -129,7 +126,7 @@ public class ComprovanteRepository extends BaseRespository implements JDBCReposi
         MongoDatabase database = mongoClient.getDatabase("academia");
         MongoCollection<Document> collection = database.getCollection("comprovantes");
         Bson projectionFields = Projections.fields(
-                Projections.include("id","matricula_aluno", "mensalidade_id", "tipo_arquivo", "url_arquivo", "nome_arquivo", "descricao_arquivo", "bucket_arquivo"),
+                Projections.include("id","matricula_aluno", "mensalidade_id", "tipo_arquivo", "nome_arquivo", "descricao_arquivo", "bucket_arquivo"),
                 Projections.excludeId());
 
         Document doc = collection.find(eq("id", object))
@@ -141,7 +138,6 @@ public class ComprovanteRepository extends BaseRespository implements JDBCReposi
                     doc.getInteger("matricula_aluno"),
                     doc.getInteger("mensalidade_id"),
                     doc.getString("tipo_arquivo"),
-                    doc.getString("url_arquivo"),
                     doc.getString("nome_arquivo"),
                     doc.getString("descricao_arquivo"),
                     doc.getString("bucket_arquivo"));

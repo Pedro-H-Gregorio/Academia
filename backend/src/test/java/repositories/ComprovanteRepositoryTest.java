@@ -43,7 +43,6 @@ class ComprovanteRepositoryTest {
                 1001,
                 2001,
                 "PDF",
-                "https://example.com/comprovante1.pdf",
                 "Comprovante1",
                 "Descrição do comprovante 1",
                 "bucket1"
@@ -83,7 +82,6 @@ class ComprovanteRepositoryTest {
                 1001,
                 2001,
                 "PNG",
-                "https://example.com/comprovante1-updated.png",
                 "Comprovante1Updated",
                 "Descrição atualizada do comprovante 1",
                 "bucket1Updated"
@@ -93,7 +91,6 @@ class ComprovanteRepositoryTest {
 
         assertNotNull(updatedComprovante, "O comprovante não foi atualizado!");
         assertEquals("PNG", updatedComprovante.getTipoArquivo());
-        assertEquals("https://example.com/comprovante1-updated.png", updatedComprovante.getUrlArquivo());
     }
 
     @Test
