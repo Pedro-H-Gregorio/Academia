@@ -98,6 +98,7 @@ class AlunosAulaRepositoryTest {
         int rowsAffected = alunoAulaRepository.deleteAll();
         alunoAulaRepository.deleteAll();
         aulaRepository.deleteAll();
+        alunoRepository.deleteAll();
         assertEquals(alunosAulas.size(), rowsAffected);
     }
 }

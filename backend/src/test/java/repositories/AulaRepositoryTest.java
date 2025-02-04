@@ -84,4 +84,19 @@ public class AulaRepositoryTest {
 
         assertEquals(1, result);
     }
+
+    @Test
+    @Order(7)
+    void testDeleteAllFinal() throws SQLException {
+        List<Aula> aulas = aulaRepository.getAll();
+        int result = aulaRepository.deleteAll();
+        if (!aulas.isEmpty()) {
+            System.out.println("Existe aulas antes de excluir");
+            List<Aula> resultado = aulaRepository.getAll();
+            assertEquals(0, resultado.size());
+        } else {
+            System.out.println("Não existe aulas antes de excluir");
+            assertEquals(0, result);
+        }
+    }
 }

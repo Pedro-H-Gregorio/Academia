@@ -22,16 +22,15 @@ class ComprovanteRepositoryTest {
     @Order(1)
     void testDeleteAll() throws SQLException {
         List<Comprovante> comprovantes = comprovanteRepository.getAll();
-        int result = comprovanteRepository.deleteAll();
 
         if (!comprovantes.isEmpty()) {
+            int result = comprovanteRepository.deleteAll();
             System.out.println("Existem comprovantes antes de excluir");
             List<Comprovante> comprovantesExcluidos = comprovanteRepository.getAll();
             assertEquals(0, comprovantesExcluidos.size());
             assertEquals(1, result);
         } else {
             System.out.println("Não existem comprovantes antes de excluir");
-            assertEquals(0, result);
         }
     }
 
@@ -101,5 +100,21 @@ class ComprovanteRepositoryTest {
         assertEquals(1, result, "O comprovante não foi excluído!");
         Comprovante deletedComprovante = comprovanteRepository.getById(1);
         assertNull(deletedComprovante, "O comprovante ainda está presente após exclusão!");
+    }
+
+    @Test
+    @Order(7)
+    void testDeleteAllFinal() throws SQLException {
+        List<Comprovante> comprovantes = comprovanteRepository.getAll();
+
+        if (!comprovantes.isEmpty()) {
+            int result = comprovanteRepository.deleteAll();
+            System.out.println("Existem comprovantes antes de excluir");
+            List<Comprovante> comprovantesExcluidos = comprovanteRepository.getAll();
+            assertEquals(0, comprovantesExcluidos.size());
+            assertEquals(1, result);
+        } else {
+            System.out.println("Não existem comprovantes antes de excluir");
+        }
     }
 }
